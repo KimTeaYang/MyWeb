@@ -26,3 +26,57 @@ create sequence member_seq
 start with 1
 increment by 1
 nocache;
+
+select * from member;
+
+
+
+SELECT IDX,NAME,USERID,HP1,HP2,HP3,EMAIL,INDATE,MSTATE 
+FROM MEMBER ORDER BY IDX DESC;
+
+update member set mstate=-2 where idx = 1;
+
+drop table zipcode;
+
+create table zipcode(
+   new_post_code varchar2(5),
+   sido_kor varchar2(40),
+   sido_eng varchar2(40),
+   sigungu_kor varchar2(30),
+   sigungu_eng varchar2(30),
+   upmyon_kor varchar2(30),
+   upmyon_eng varchar2(30),
+   doro_num varchar2(20),
+   doro_kor varchar2(100),
+   doro_eng varchar2(100),
+   under_flag number(10),
+   bld_origin_num number(5),
+   bld_refer_num number(5),
+   bld_manage_num varchar2(30),
+   multi_deliver_name varchar2(40),
+   sigungu_bld_name varchar2(200),
+   law_dong_num varchar2(30),
+   law_dong_name varchar2(30),
+   ri_name varchar2(30),
+   admin_dong_name varchar2(40),
+   san_flag varchar2(10),
+   jibeon_bonbeon number(4),
+   upmyondong_seq varchar2(5),
+   jibeon_bubeon number(4),
+   old_post_code  varchar2(6),
+   post_code_seq varchar2(3)
+);
+
+select * from zipcode where doro_kor like '%당산로%';
+SELECT NEW_POST_CODE, SIDO_KOR, SIGUNGU_KOR, DORO_KOR, LAW_DONG_NAME, ADMIN_DONG_NAME, JIBEON_BONBEON, JIBEON_BUBEON
+FROM ZIPCODE;
+
+뷰를 생성하되
+뷰이름 : memberView
+조건 : mstate가 0(일반회원)이거나 -1(정지회원)인 회원정보만 갖는 뷰를 생성하세요;
+
+create or replace view memberView
+as
+select * from member where mstate=0 or mstate=-1;
+
+select * from memberView;

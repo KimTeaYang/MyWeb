@@ -2,7 +2,6 @@
 	pageEncoding="UTF-8"%>
 
 <%
-	String myctx1 = request.getContextPath();
 	Cookie[] cks = request.getCookies();
 	String uid="";
 	boolean isSave = false;
@@ -48,7 +47,7 @@
 			
 			<!-- Modal body -->
 			<div class="modal-body"> 
-				<form name="loginF" action="<%=myctx1 %>/login/loginEnd.jsp" method="post">
+				<form name="loginF" action="<%=myctx %>/login/loginEnd.jsp" method="post">
 					<table class="table table-borderless">
 						<tr>
 							<td>아이디</td>
